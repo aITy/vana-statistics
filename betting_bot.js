@@ -44,10 +44,10 @@ function key_exists(key, search) {
     return key in search;
 }
 
-nejhorsiKurz = function() {
+vypisVsazky = function() {
 	if (bets.length == 0) {
 		console.log("nejsou nacteny zadna data");
-		return;
+		return false;
 	}
 
 	rounded_bets = [];
@@ -91,7 +91,6 @@ nejhorsiKurz = function() {
 		log_string += used_bets_map[used_bets[i].toString()][2];
 
 		console.log(log_string);
-		//console.log( used_bets[i].toString() + "\t\t" + used_bets_map[used_bets[i].toString()][0] + "\t\t" + roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2) + "\t" + used_bets_map[used_bets[i].toString()][2]);
 	}
 
 	return true;
@@ -99,17 +98,35 @@ nejhorsiKurz = function() {
 
 nactiData = function() {
 
-	bets[0] = new bet("1.11.2003 15:52:30", 1.15, 0.5, 0);
-	bets[1] = new bet("1.11.2003 15:53:30", 1.20, 1, 1.2);
-	bets[2] = new bet("1.11.2003 15:54:30", 1.26, 1, 1.2);
-	bets[3] = new bet("1.11.2003 15:55:30", 1.50, 0.05, 0);
-	bets[4] = new bet("1.11.2003 15:56:30", 1.23, 0.1, 0.6);
-	bets[5] = new bet("1.11.2003 15:57:30", 1.17, 0.5, 2);
-	bets[6] = new bet("1.11.2003 15:58:30", 1.45, 0.8, 4);
-	bets[7] = new bet("1.11.2003 15:59:30", 2.10, 1.5, 0);
-	bets[8] = new bet("1.11.2003 16:00:30", 2.15, 1.55, 3);
-	bets[9] = new bet("1.11.2003 16:01:30", 2.05, 2.5, 0);
+	var date, exchange, outcome, income;
 
-	console.log(bets);
+	var bets_content_rows = $('tbody#betsContent').getElementsByTagName('tr');
+	if (bets_content_rows.className != "multiple") {
+		for (var i = 0; i < bets_content_rows.length; i++) {
+			var one_bet = $('tbody#betsContent').getElementsByTagName('tr').item(i).childNodes;
+			for (var j = 0; j < one_bet.length; j++) {
+				if (one_bet.item(j).nodeName.toUpperCase() == "TD") {
+					switch(j) {
+						case 1:
+							date = one_bet.item(j).innerText.replace(/\n/g, " ");
+							break;
+						case 4:
+							exchange = parseInt(one_bet.item(j).innerText);
+							break;
+						case 6:
+							outcome = parseInt(one_bet.item(j).innerText);
+							break;
+						case 10:
+							income = parseInt(one_bet.item(j).innerText);
+							break;
+						default: break;
+					}
+				}
+			}
+
+			bets[bets.length] = new bet(date, exchange, outcome, income);
+		}
+	}
+
 	return true;
 }
