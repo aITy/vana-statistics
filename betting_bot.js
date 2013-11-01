@@ -59,18 +59,12 @@ nejhorsiKurz = function() {
 		rounded_bets[i] = number;
 	}
 
-	/*var used_bets = rounded_bets.slice()
-	  .sort(function(a,b){
-	    return a - b;
-	  })
-	  .reduce(function(a,b){
-	    if (a.slice(-1) != b) a.push(b);
-	    return a;
-	  },[]);*/
-
 	var used_bets_map = {};
 
 	for(var i = 0; i < rounded_bets.length; i++) {
+		console.log(i + " " + rounded_bets[i]);
+		console.log(! key_exists(used_bets_map, rounded_bets[i].toString()));
+
 		if (! key_exists(used_bets_map, rounded_bets[i].toString())) {
 			used_bets_map[rounded_bets[i].toString()] = 1;
 		}
