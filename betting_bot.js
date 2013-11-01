@@ -70,8 +70,7 @@ nejhorsiKurz = function() {
 
 	var used_bets_map = {};
 	for (var i = 0; i < used_bets.length; i++) {
-		var key = { key: used_bets[i].toString(), value : 1 };
-		used_bets_map.push(key);
+		used_bets_map[used_bets[i].toString()] = 1;
 	}
 
 	for(var i = 0; i < rounded_bets.length; i++) {
