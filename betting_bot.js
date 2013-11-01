@@ -83,7 +83,7 @@ nejhorsiKurz = function() {
 	}
 
 	console.log("Kurz\tcetnost kurzu\tvsazeno\tvyhrano");
-	for (var i = 0; i < used_bets_map.length; i++) {
+	for (var i = 0; i < used_bets.length; i++) {
 		console.log( used_bets[i].toString() + "\t" + used_bets_map[used_bets[i].toString()][0] + "\t" + used_bets_map[used_bets[i].toString()][1] + "\t" + used_bets_map[used_bets[i].toString()][2]);
 	}
 
