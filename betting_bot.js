@@ -68,7 +68,7 @@ nejhorsiKurz = function() {
 	    return a;
 	  },[]);*/
 
-	var used_bets_map = [];
+	var used_bets_map = {};
 
 	for(var i = 0; i < rounded_bets.length; i++) {
 		console.log(i + " " + rounded_bets[i]);
