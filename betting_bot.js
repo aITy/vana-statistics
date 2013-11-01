@@ -88,7 +88,7 @@ nejhorsiKurz = function() {
 
 	console.log("Kurz\tcetnost\tvsazeno\tvyhrano");
 	for (var i = 0; i < used_bets.length; i++) {
-		console.log( used_bets[i].toString() + "\t\t" + used_bets_map[used_bets[i].toString()][0] + "\t" + used_bets_map[used_bets[i].toString()][1] + "\t" + used_bets_map[used_bets[i].toString()][2]);
+		console.log( used_bets[i].toString() + "\t\t" + used_bets_map[used_bets[i].toString()][0] + "\t\t" + used_bets_map[used_bets[i].toString()][1] + "\t\t" + used_bets_map[used_bets[i].toString()][2]);
 	}
 
 	return true;
