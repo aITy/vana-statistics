@@ -100,10 +100,10 @@ nactiData = function() {
 
 	var date, exchange, outcome, income;
 
-	var bets_content_rows = $('tbody#betsContent').getElementsByTagName('tr');
+	var bets_content_rows = document.getElementById('betsContent').getElementsByTagName('tr');
 	if (bets_content_rows.className != "multiple") {
 		for (var i = 0; i < bets_content_rows.length; i++) {
-			var one_bet = $('tbody#betsContent').getElementsByTagName('tr').item(i).childNodes;
+			var one_bet = bets_content_rows.item(i).childNodes;
 			for (var j = 0; j < one_bet.length; j++) {
 				if (one_bet.item(j).nodeName.toUpperCase() == "TD") {
 					switch(j) {
