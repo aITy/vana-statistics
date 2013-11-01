@@ -1,4 +1,4 @@
-var bets = {};
+var bets = [];
 
 function bet(time, exchange, outcome, income) {
 	this.timestamp = time;
@@ -40,7 +40,7 @@ nejhorsiKurz = function() {
 		return;
 	}
 
-	rounded_bets = {};
+	rounded_bets = [];
 
 	var number;
 
@@ -58,7 +58,7 @@ nejhorsiKurz = function() {
 	    return a;
 	  },[]);
 
-	var used_bets_map;
+	var used_bets_map = [];
 
 	for(var i = 0; i < used_bets.length; i++) {
 		if (! used_bets_map[used_bets[i]]) {
