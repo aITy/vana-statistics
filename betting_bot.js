@@ -70,14 +70,24 @@ nejhorsiKurz = function() {
 
 	var used_bets_map = {};
 	for (var i = 0; i < used_bets.length; i++) {
-		used_bets_map[used_bets[i].toString()] = 1;
+		used_bets_map[used_bets[i].toString()] = [1, 0, 0];
 	}
 
 	for(var i = 0; i < rounded_bets.length; i++) {
-		used_bets_map[rounded_bets[i].toString()] += 1;
+		used_bets_map[rounded_bets[i].toString()] = [used_bets_map[rounded_bets[i].toString()] + 1, 0, 0];
 	}
 
-	console.log(used_bets_map);
+	for( var i = 0; i < bets.length; i++) {
+		number = roundOnPlaces(bets[i].getExchange(), 1);
+		used_bets_map[number] = [used_bets_map[number][0], used_bets_map[number][1] + bets[i].getOutcome(), used_bets_map[number][2] + bets[i].getIncome();
+	}
+
+	console.log("Kurz\tcetnost kurzu\tvsazeno\tvyhrano");
+	for (var i = 0; i < used_bets_map.length; i++) {
+		console.log( used_bets[i].toString() + "\t" + used_bets_map[used_bets[i].toString()][0] + "\t" + used_bets_map[used_bets[i].toString()][1] + "\t" + used_bets_map[used_bets[i].toString()][2]);
+	}
+
+	return true;
 }
 
 nactiData = function() {
