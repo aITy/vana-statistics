@@ -59,34 +59,27 @@ nejhorsiKurz = function() {
 		rounded_bets[i] = number;
 	}
 
-	var used_bets = rounded_bets.slice() // slice makes copy of array before sorting it
+	/*var used_bets = rounded_bets.slice()
 	  .sort(function(a,b){
 	    return a - b;
 	  })
 	  .reduce(function(a,b){
-	    if (a.slice(-1) != b) a.push(b); // slice(-1) means last item in array without removing it (like .pop())
+	    if (a.slice(-1) != b) a.push(b);
 	    return a;
-	  },[]);
+	  },[]);*/
 
 	var used_bets_map = [];
 
-	for(var i = 0; i < used_bets.length; i++) {
-		if (! key_exists(used_bets_map, used_bets[i])) {
-			used_bets_map[used_bets[i]] = 1;
+	for(var i = 0; i < rounded_bets.length; i++) {
+		if (! key_exists(used_bets_map, rounded_bets[i])) {
+			used_bets_map[rounded_bets[i]] = 1;
 		}
 		else {
-			used_bets_map[used_bets[i]] += 1;
+			used_bets_map[rounded_bets[i]] += 1;
 		}
 	}
 
 	console.log(used_bets_map);
-
-
-	/*
-	bets.sort(function(a,b){
-
-	});
-*/
 }
 
 nactiData = function() {
