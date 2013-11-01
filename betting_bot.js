@@ -112,6 +112,8 @@ nactiData = function() {
 							break;
 						case 4:
 							exchange = parseInt(one_bet.item(j).innerText);
+							console.log(one_bet.item(j).innerText);
+							console.log(exchange);
 							break;
 						case 6:
 							outcome = parseInt(one_bet.item(j).innerText);
