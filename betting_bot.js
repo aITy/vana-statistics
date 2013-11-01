@@ -111,15 +111,13 @@ nactiData = function() {
 							date = one_bet.item(j).innerText.replace(/\n/g, " ");
 							break;
 						case 4:
-							exchange = parseInt(one_bet.item(j).innerText);
-							console.log(one_bet.item(j).innerText);
-							console.log(exchange);
+							exchange = parseFloat(one_bet.item(j).innerText);
 							break;
 						case 6:
-							outcome = parseInt(one_bet.item(j).innerText);
+							outcome = parseFloat(one_bet.item(j).innerText);
 							break;
 						case 10:
-							income = parseInt(one_bet.item(j).innerText);
+							income = parseFloat(one_bet.item(j).innerText);
 							break;
 						default: break;
 					}
@@ -129,8 +127,6 @@ nactiData = function() {
 			bets[bets.length] = new bet(date, exchange, outcome, income);
 		}
 	}
-
-	console.log(bets);
 
 	return true;
 }
