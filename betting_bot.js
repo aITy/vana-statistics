@@ -32,7 +32,17 @@ function roundOnPlaces(value, places) {
     return (Math.round(value * multiplier) / multiplier);
 }
 
-
+function key_exists(key, search) {
+    if (!search || (search.constructor !== Array && search.constructor !== Object)) {
+        return false;
+    }
+    for (var i = 0; i < search.length; i++) {
+        if (search[i] === key) {
+            return true;
+        }
+    }
+    return key in search;
+}
 
 nejhorsiKurz = function() {
 	if (bets.length == 0) {
@@ -61,8 +71,8 @@ nejhorsiKurz = function() {
 	var used_bets_map = [];
 
 	for(var i = 0; i < used_bets.length; i++) {
-		if (! used_bets_map[used_bets[i]]) {
-			used_bets_map[i] = { used_bets[i] : 1 };
+		if (! key_exists(used_bets_map, used_bets[i])) {
+			used_bets_map[used_bets[i]] = 1;
 		}
 		else {
 			used_bets_map[used_bets[i]] += 1;
