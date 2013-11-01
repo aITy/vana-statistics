@@ -128,6 +128,8 @@ nactiData = function() {
 		}
 	}
 
+	console.log(bets);
+
 	return true;
 }
 
