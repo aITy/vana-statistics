@@ -74,7 +74,7 @@ nejhorsiKurz = function() {
 	}
 
 	for(var i = 0; i < rounded_bets.length; i++) {
-		used_bets_map[rounded_bets[i].toString()] = [used_bets_map[rounded_bets[i].toString()] + 1, 0, 0];
+		used_bets_map[rounded_bets[i].toString()] = [parseInt(used_bets_map[rounded_bets[i].toString()]) + 1, 0, 0];
 	}
 
 	for (var i = 0; i < used_bets.length; i++) {
@@ -86,7 +86,7 @@ nejhorsiKurz = function() {
 		used_bets_map[number] = [used_bets_map[number][0], used_bets_map[number][1] + bets[i].getOutcome(), used_bets_map[number][2] + bets[i].getIncome()];
 	}
 
-	console.log("Kurz\tcetnost kurzu\tvsazeno\tvyhrano");
+	console.log("Kurz\tcetnost\tvsazeno\tvyhrano");
 	for (var i = 0; i < used_bets.length; i++) {
 		console.log( used_bets[i].toString() + "\t" + used_bets_map[used_bets[i].toString()][0] + "\t" + used_bets_map[used_bets[i].toString()][1] + "\t" + used_bets_map[used_bets[i].toString()][2]);
 	}
