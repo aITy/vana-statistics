@@ -68,18 +68,16 @@ nejhorsiKurz = function() {
 	    return a;
 	  },[]);
 
-	 console.log(used_bets);
-
 	var used_bets_map = [];
 	for (var i = 0; i < used_bets.length; i++) {
-		var key = { key: used_bets[i].toString(), value: 1 };
+		var key = { used_bets[i].toString() : 1 };
 		used_bets_map.push(key);
 	}
 
 	console.log(used_bets_map);
 
 	for(var i = 0; i < rounded_bets.length; i++) {
-		used_bets_map[rounded_bets[i].toString()] = used_bets_map[rounded_bets[i].toString()] + 1;
+		used_bets_map[rounded_bets[i].toString()] += 1;
 	}
 
 	console.log(used_bets_map);
