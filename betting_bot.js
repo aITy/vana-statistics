@@ -77,10 +77,6 @@ nejhorsiKurz = function() {
 		used_bets_map[rounded_bets[i].toString()] = [parseInt(used_bets_map[rounded_bets[i].toString()]) + 1, 0, 0];
 	}
 
-	for (var i = 0; i < used_bets.length; i++) {
-		console.log( used_bets[i].toString() + "\t" + used_bets_map[used_bets[i].toString()][0]);
-	}
-
 	for( var i = 0; i < bets.length; i++) {
 		number = roundOnPlaces(bets[i].getExchange(), 1);
 		used_bets_map[number] = [used_bets_map[number][0], used_bets_map[number][1] + bets[i].getOutcome(), used_bets_map[number][2] + bets[i].getIncome()];
@@ -88,7 +84,14 @@ nejhorsiKurz = function() {
 
 	console.log("Kurz\tcetnost\tvsazeno\tvyhrano");
 	for (var i = 0; i < used_bets.length; i++) {
-		console.log( used_bets[i].toString() + "\t\t" + used_bets_map[used_bets[i].toString()][0] + "\t\t" + roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2) + (used_bets_map[used_bets[i].toString()][1].toString().length > 3)?"\t":"\t\t" + used_bets_map[used_bets[i].toString()][2]);
+		var log_string = used_bets[i].toString() + "\t\t";
+		log_string += used_bets_map[used_bets[i].toString()][0] + "\t\t";
+		log_string += roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2);
+		log_string += (roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2).toString().length > 3) ? "\t" : "\t\t";
+		log_string += used_bets_map[used_bets[i].toString()][2];
+
+		console.log(log_string);
+		//console.log( used_bets[i].toString() + "\t\t" + used_bets_map[used_bets[i].toString()][0] + "\t\t" + roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2) + "\t" + used_bets_map[used_bets[i].toString()][2]);
 	}
 
 	return true;
