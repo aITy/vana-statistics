@@ -130,3 +130,10 @@ nactiData = function() {
 
 	return true;
 }
+
+vycistiData = function() {
+	for(var i = 0; i < bets.length; i++) {
+		delete bets[i];
+	}
+	bets = [];
+}
