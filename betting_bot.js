@@ -113,13 +113,13 @@ vypisVsazky = function() {
 		log_string += getRatioStr(roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2), roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2));
 
 		summary = [summary[0] + used_bets[i],
-					summary[1] + used_bets_map[used_bets[i]],
-					summary[2] + roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2),
-					summary[3] +  roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2) ];
+					parseFloat(summary[1]) + parseFloat(used_bets_map[used_bets[i]]),
+					parseFloat(summary[2]) + roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2),
+					parseFloat(summary[3]) + roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2) ];
 
 		console.log(log_string);
 	}
-	var summary_str = "Celkem:\n" + roundOnPlaces(summary[0], 2).toString() + "\t" + summary[1].toString() + "\t" + summary[2].toString() + "\t" + summary[3].toString() + "\t";
+	var summary_str = "Celkem:\n" + roundOnPlaces(summary[0], 2).toString() + "\t" + roundOnPlaces(summary[1], 2).toString() + "\t" + roundOnPlaces(summary[2], 2).toString() + "\t" + roundOnPlaces(summary[3], 2).toString() + "\t";
 	summary_str += getRatioStr(summary[2], summary[3]);
 
 	console.log(summary_str);
