@@ -109,7 +109,7 @@ vypisVsazky = function() {
 		log_string += (roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2).toString().length > 3) ? "\t" : "\t\t";
 		log_string += roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2);
 		log_string += (roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2).toString().length > 3) ? "\t" : "\t\t";
-		log_string += getRatio(roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2), roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2));
+		log_string += getRatioStr(roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2), roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2));
 
 		console.log(log_string);
 	}
