@@ -119,7 +119,7 @@ vypisVsazky = function() {
 
 		console.log(log_string);
 	}
-	var summary_str = "Celkem:\n" + summary[0].toString() + "\t" + summary[1].toString() + "\t" + summary[2].toString() + "\t" + summary[3].toString() + "\t";
+	var summary_str = "Celkem:\n" + roundOnPlaces(summary[0], 2).toString() + "\t" + summary[1].toString() + "\t" + summary[2].toString() + "\t" + summary[3].toString() + "\t";
 	summary_str += getRatioStr(summary[2], summary[3]);
 
 	console.log(summary_str);
