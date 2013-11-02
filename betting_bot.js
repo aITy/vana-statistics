@@ -49,7 +49,7 @@ getRatioStr = function(outcome, income) {
 	}
 
 	result = (divident - divisor)/divisor * 100;
-	result_str = sign + roundOnPlaces(result, 2).toString();
+	result_str = sign + roundOnPlaces(result, 1).toString();
 
 	str = "";
 	for(var i = 0; i < 5 - result_str.length - 1; i++) {
@@ -72,6 +72,7 @@ vypisVsazky = function() {
 	rounded_bets = [];
 
 	var number;
+	var summary = [0, 0, 0, 0];
 
 	for(var i = 0; i < bets.length; i++) {
 		number = roundOnPlaces(bets[i].getExchange(), 1);
@@ -111,8 +112,17 @@ vypisVsazky = function() {
 		log_string += (roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2).toString().length > 3) ? "\t" : "\t\t";
 		log_string += getRatioStr(roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2), roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2));
 
+		summary = [summary[0] + used_bets[i],
+					summary[1] + used_bets_map[used_bets[i]],
+					summary[2] + roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2),
+					summary[3] +  roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2) ];
+
 		console.log(log_string);
 	}
+	var summary_str = "Celkem:\n" + summary[0].toString() + "\t" + summary[1].toString() + "\t" + summary[2].toString() + "\t" + summary[3].toString() + "\t";
+	summary_str += getRatioStr(summary[2], summary[3]);
+
+	console.log(summary_str);
 
 	return true;
 }
