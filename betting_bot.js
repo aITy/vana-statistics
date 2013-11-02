@@ -52,10 +52,10 @@ getRatioStr = function(outcome, income) {
 	result_str = sign + roundOnPlaces(result, 2).toString();
 
 	str = "";
-	for(var i = 0; i < 5 - result_str.length; i++) {
+	for(var i = 0; i < 5 - result_str.length - 1; i++) {
 		str += " ";
 	}
-	return str + result_str;
+	return str + result_str + "%";
 }
 
 function roundOnPlaces(value, places) {
