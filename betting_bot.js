@@ -27,7 +27,11 @@ bet.prototype.getData = function() {
 	return data;
 }
 
-getRatio = function(outcome, income) {
+getRatioStr = function(outcome, income) {
+	if (income == 0) {
+		return "-100%";
+	}
+
 	var sign, divident, divisor, result, result_str, str;
 	if (outcome - income > 0) {
 		sign = "-";
@@ -45,13 +49,13 @@ getRatio = function(outcome, income) {
 	}
 
 	result = (divident - divisor)/divisor * 100;
-	result_str = sign + result.toString();
+	result_str = sign + roundOnPlaces(result, 2).toString();
 
+	str = "";
 	for(var i = 0; i < 5 - result_str.length; i++) {
 		str += " ";
 	}
-	str += result_str;
-	return str;
+	return str + result_str;
 }
 
 function roundOnPlaces(value, places) {
