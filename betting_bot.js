@@ -27,21 +27,36 @@ bet.prototype.getData = function() {
 	return data;
 }
 
+getRatio = function(outcome, income) {
+	var sign, divident, divisor, result, result_str, str;
+	if (outcome - income > 0) {
+		sign = "-";
+		divident = outcome;
+		divisor = income;
+	}
+	else if (outcome - income == 0) {
+		sign = "";
+		divident = divisor = 1;
+	}
+	else {
+		sign = "+";
+		divident = income;
+		divisor = outcome;
+	}
+
+	result = (divident - divisor)/divisor * 100;
+	result_str = sign + result.toString();
+
+	for(var i = 0; i < 5 - result_str.length; i++) {
+		str += " ";
+	}
+	str += result_str;
+	return str;
+}
+
 function roundOnPlaces(value, places) {
     var multiplier = Math.pow(10, places);
     return (Math.round(value * multiplier) / multiplier);
-}
-
-function key_exists(key, search) {
-    if (!search || (search.constructor !== Array && search.constructor !== Object)) {
-        return false;
-    }
-    for (var i = 0; i < search.length; i++) {
-        if (search[i] === key) {
-            return true;
-        }
-    }
-    return key in search;
 }
 
 vypisVsazky = function() {
@@ -82,13 +97,15 @@ vypisVsazky = function() {
 		used_bets_map[number] = [used_bets_map[number][0], used_bets_map[number][1] + bets[i].getOutcome(), used_bets_map[number][2] + bets[i].getIncome()];
 	}
 
-	console.log("Kurz\tcetnost\tvsazeno\tvyhrano");
+	console.log("Kurz\tCetnost\tVsazeno\tVyhrano\tZisk");
 	for (var i = 0; i < used_bets.length; i++) {
 		var log_string = used_bets[i].toString() + "\t\t";
 		log_string += used_bets_map[used_bets[i].toString()][0] + "\t\t";
 		log_string += roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2);
 		log_string += (roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2).toString().length > 3) ? "\t" : "\t\t";
-		log_string += used_bets_map[used_bets[i].toString()][2];
+		log_string += roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2);
+		log_string += (roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2).toString().length > 3) ? "\t" : "\t\t";
+		log_string += getRatio(roundOnPlaces(used_bets_map[used_bets[i].toString()][1], 2), roundOnPlaces(used_bets_map[used_bets[i].toString()][2], 2));
 
 		console.log(log_string);
 	}
@@ -132,8 +149,5 @@ nactiData = function() {
 }
 
 vycistiData = function() {
-	for(var i = 0; i < bets.length; i++) {
-		delete bets[i];
-	}
-	bets = [];
+	bets.length = 0;
 }
