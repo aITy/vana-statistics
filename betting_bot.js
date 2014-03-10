@@ -163,6 +163,8 @@ nactiData = function() {
 					}
 				}
 				if (bets.length > 0) {
+					console.log(bets[bets.length - 1].getTimestamp());
+					console.log(date);
 					if (bets[bets.length - 1].getTimestamp() != date) {
 						bets[bets.length] = new bet(date, exchange, outcome, income);
 					}
