@@ -138,8 +138,11 @@ nactiData = function() {
 	var date, exchange, outcome, income;
 
 	var bets_content_rows = document.getElementById('betsContent').getElementsByTagName('tr');
-	if (bets_content_rows.className.indexOf("multiple") == -1) {
+	//if (bets_content_rows.className != "multiple") {
 		for (var i = 0; i < bets_content_rows.length; i++) {
+			if (bets_content_rows[i].className.indexOf("multiple") != -1) {
+				continue;
+			}
 			var one_bet = bets_content_rows.item(i).childNodes;
 			for (var j = 0; j < one_bet.length; j++) {
 				if (one_bet.item(j).nodeName.toUpperCase() == "TD") {
@@ -163,7 +166,7 @@ nactiData = function() {
 
 			bets[bets.length] = new bet(date, exchange, outcome, income);
 		}
-	}
+	//}
 
 	return true;
 }
