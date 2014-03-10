@@ -149,7 +149,7 @@ nactiData = function() {
 		for (var i = 0; i < bets_content_rows.length; i++) {
 
 			if (bets_content_rows[i].className.indexOf("multiple") == -1) {
-				var betid = bets_content_rows[i].getElementsByClassName("bet-id").innerText;
+				var betid = bets_content_rows[i].getElementsByClassName("bet-id")[0].innerText;
 				var one_bet = bets_content_rows.item(i).childNodes;
 				for (var j = 0; j < one_bet.length; j++) {
 					if (one_bet.item(j).nodeName.toUpperCase() == "TD") {
