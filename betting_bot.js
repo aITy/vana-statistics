@@ -141,14 +141,14 @@ nactiData = function() {
 						case 1:
 							date = one_bet.item(j).innerText.replace(/\n/g, " ");
 							break;
-						case 4:
+						case 3:
 							exchange = parseFloat(one_bet.item(j).innerText);
+							break;
+						case 4:
+							income = parseFloat(one_bet.item(j).innerText);
 							break;
 						case 6:
 							outcome = parseFloat(one_bet.item(j).innerText);
-							break;
-						case 10:
-							income = parseFloat(one_bet.item(j).innerText);
 							break;
 						default: break;
 					}
