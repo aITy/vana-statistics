@@ -6,7 +6,7 @@ function bet(time, exchange, outcome, income) {
 	this.outcome = outcome;
 	this.income = income;	
 }
-bet.prototype.getTime = function() {
+bet.prototype.getTimestamp = function() {
 	return this.timestamp;
 }
 bet.prototype.getExchange = function() {
@@ -162,7 +162,11 @@ nactiData = function() {
 						}
 					}
 				}
-				if (bets[bets.length - 1].getTime() != date) {
+				if (bets.length > 0) {
+					if (bets[bets.length - 1].getTimestamp() != date) {
+						bets[bets.length] = new bet(date, exchange, outcome, income);
+					}
+				}else {
 					bets[bets.length] = new bet(date, exchange, outcome, income);
 				}
 			}
