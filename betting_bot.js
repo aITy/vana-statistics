@@ -147,13 +147,31 @@ vypisVsazky = function() {
 nactiData = function() {
 
 	var date, exchange, outcome, income;
-
-	var bets_content_rows = document.getElementById('betsContent').getElementsByTagName('tr');
+	var multiple = false;
+	var multiple_part = false;
+	
+	var bets_content_rows = $('#betsContent').find('tr');
 	//if (bets_content_rows.className != "multiple") {
-		console.log(bets_content_rows.length);
 		for (var i = 0; i < bets_content_rows.length; i++) {
 
-			if (bets_content_rows[i].className == "") {
+			if (bets_content_rows[i].className == "multiple multiple-first-row") {
+				multiple = true;
+				continue;
+			}
+			
+			if (bets_content_rows[i].className == "multiple part")
+				multiple_part = true;
+				continue;
+			}
+			
+			if (multiple && !multiple_part) {
+				continue;
+			}
+
+			if (multiple && multiple_part) {
+				multiple = false;
+				multiple_part = false;
+
 				var betidlookup = bets_content_rows[i].getElementsByClassName("bet-id");
 				var betid = "-1";
 				if (betidlookup.length > 0) {
@@ -179,13 +197,7 @@ nactiData = function() {
 						}
 					}
 				}
-				if (bets.length > 0) {
-					if (bets[bets.length - 1].getBetid() != betid) {
-						bets[bets.length] = new bet(date, exchange, outcome, income, betid);
-					}
-				} else {
-					bets[bets.length] = new bet(date, exchange, outcome, income, betid);
-				}
+				bets[bets.length] = new bet(date, exchange, outcome, income, betid);
 			}
 		}
 	//}
