@@ -138,7 +138,7 @@ nactiData = function() {
 	var date, exchange, outcome, income;
 
 	var bets_content_rows = document.getElementById('betsContent').getElementsByTagName('tr');
-	if (bets_content_rows.className != "multiple") {
+	if (bets_content_rows.className.indexOf("multiple") == -1) {
 		for (var i = 0; i < bets_content_rows.length; i++) {
 			var one_bet = bets_content_rows.item(i).childNodes;
 			for (var j = 0; j < one_bet.length; j++) {
