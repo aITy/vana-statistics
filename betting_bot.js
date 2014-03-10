@@ -71,7 +71,7 @@ function roundOnPlaces(value, places) {
 
 vypisHoleVsazky = function() {
 	for (var i = 0; i < bets.length; i++) {
-		console.log(bets[i].getBetid() + "\t" + bets[i].getExchange() + "\t" + bets[i].getOutcome() + "\t" + bets[i].getIncome());
+		console.log(bets[i].getBetid() + "\n" + bets[i].getTimestamp() + "\t" + bets[i].getExchange() + "\t" + bets[i].getOutcome() + "\t" + bets[i].getIncome());
 	}
 }
 
