@@ -177,7 +177,7 @@ nactiData = function() {
 				if (betidlookup.length > 0) {
 					betid = betidlookup[0].innerText;
 				}
-				var one_bet = bets_content_rows.item(i).childNodes;
+				var one_bet = bets_content_rows[i].childNodes;
 				for (var j = 0; j < one_bet.length; j++) {
 					if (one_bet.item(j).nodeName.toUpperCase() == "TD") {
 						switch(j) {
