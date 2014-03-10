@@ -139,6 +139,7 @@ nactiData = function() {
 
 	var bets_content_rows = document.getElementById('betsContent').getElementsByTagName('tr');
 	//if (bets_content_rows.className != "multiple") {
+		console.log(bets_content_rows.length);
 		for (var i = 0; i < bets_content_rows.length; i++) {
 
 			if (bets_content_rows[i].className.indexOf("multiple") == -1) {
@@ -168,7 +169,7 @@ nactiData = function() {
 					if (bets[bets.length - 1].getTimestamp() != date) {
 						bets[bets.length] = new bet(date, exchange, outcome, income);
 					}
-				}else {
+				} else {
 					bets[bets.length] = new bet(date, exchange, outcome, income);
 				}
 			}
