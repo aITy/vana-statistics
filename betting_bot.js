@@ -140,32 +140,30 @@ nactiData = function() {
 	var bets_content_rows = document.getElementById('betsContent').getElementsByTagName('tr');
 	//if (bets_content_rows.className != "multiple") {
 		for (var i = 0; i < bets_content_rows.length; i++) {
-			console.log(bets_content_rows[i].className.indexOf("multiple"));
-			if (bets_content_rows[i].className.indexOf("multiple") != -1) {
-				continue;
-			}
-			var one_bet = bets_content_rows.item(i).childNodes;
-			for (var j = 0; j < one_bet.length; j++) {
-				if (one_bet.item(j).nodeName.toUpperCase() == "TD") {
-					switch(j) {
-						case 1:
-							date = one_bet.item(j).innerText.replace(/\n/g, " ");
-							break;
-						case 4:
-							exchange = parseFloat(one_bet.item(j).innerText);
-							break;
-						case 6:
-							outcome = parseFloat(one_bet.item(j).innerText);
-							break;
-						case 10:
-							income = parseFloat(one_bet.item(j).innerText);
-							break;
-						default: break;
+
+			if (bets_content_rows[i].className.indexOf("multiple") == -1) {
+				var one_bet = bets_content_rows.item(i).childNodes;
+				for (var j = 0; j < one_bet.length; j++) {
+					if (one_bet.item(j).nodeName.toUpperCase() == "TD") {
+						switch(j) {
+							case 1:
+								date = one_bet.item(j).innerText.replace(/\n/g, " ");
+								break;
+							case 4:
+								exchange = parseFloat(one_bet.item(j).innerText);
+								break;
+							case 6:
+								outcome = parseFloat(one_bet.item(j).innerText);
+								break;
+							case 10:
+								income = parseFloat(one_bet.item(j).innerText);
+								break;
+							default: break;
+						}
 					}
 				}
+				bets[bets.length] = new bet(date, exchange, outcome, income);
 			}
-
-			bets[bets.length] = new bet(date, exchange, outcome, income);
 		}
 	//}
 
