@@ -149,7 +149,7 @@ nactiData = function() {
 	var date, exchange, outcome, income;
 	var multiple = false;
 	var multiple_part = false;
-	
+
 	var bets_content_rows = $('#betsContent').find('tr');
 	//if (bets_content_rows.className != "multiple") {
 		for (var i = 0; i < bets_content_rows.length; i++) {
@@ -159,7 +159,7 @@ nactiData = function() {
 				continue;
 			}
 			
-			if (bets_content_rows[i].className == "multiple part")
+			if (bets_content_rows[i].className == "multiple part") {
 				multiple_part = true;
 				continue;
 			}
