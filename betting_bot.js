@@ -63,6 +63,12 @@ function roundOnPlaces(value, places) {
     return (Math.round(value * multiplier) / multiplier);
 }
 
+vypisHoleVsazky = function() {
+	for (var i = 0; i < bets.length; i++) {
+		console.log(bets[i].getTime() + "\t" + bets[i].getExchange() + "\t" + bets[i].getIncome() + "\t" + bets[i].getOutcome());
+	}
+}
+
 vypisVsazky = function() {
 	if (bets.length == 0) {
 		console.log("nejsou nacteny zadna data");
