@@ -1,10 +1,11 @@
 var bets = [];
 
-function bet(time, exchange, outcome, income) {
+function bet(time, exchange, outcome, income, id) {
 	this.timestamp = time;
 	this.exchange = exchange;
 	this.outcome = outcome;
-	this.income = income;	
+	this.income = income;
+	this.betid = id;
 }
 bet.prototype.getTimestamp = function() {
 	return this.timestamp;
@@ -18,12 +19,17 @@ bet.prototype.getOutcome = function() {
 bet.prototype.getIncome = function() {
 	return this.income;
 }
+bet.prototype.getBetid = function() {
+	return this.betid;
+}
+
 bet.prototype.getData = function() {
 	var data;
 	data["time"] = this.timestamp;
 	data["exchange"] = this.exchange;
 	data["outcome"] = this.outcome;
 	data["income"] = this.income;
+	data["betid"] = this.betid;
 	return data;
 }
 
@@ -143,6 +149,7 @@ nactiData = function() {
 		for (var i = 0; i < bets_content_rows.length; i++) {
 
 			if (bets_content_rows[i].className.indexOf("multiple") == -1) {
+				var betid = bets_content_rows[i].getElementsByClassName("bet-id");
 				var one_bet = bets_content_rows.item(i).childNodes;
 				for (var j = 0; j < one_bet.length; j++) {
 					if (one_bet.item(j).nodeName.toUpperCase() == "TD") {
@@ -164,13 +171,11 @@ nactiData = function() {
 					}
 				}
 				if (bets.length > 0) {
-					console.log(bets[bets.length - 1].getTimestamp());
-					console.log(date);
-					if (bets[bets.length - 1].getTimestamp() != date) {
-						bets[bets.length] = new bet(date, exchange, outcome, income);
+					if (bets[bets.length - 1].getBetid() != betid) {
+						bets[bets.length] = new bet(date, exchange, outcome, income, betid);
 					}
 				} else {
-					bets[bets.length] = new bet(date, exchange, outcome, income);
+					bets[bets.length] = new bet(date, exchange, outcome, income, betid);
 				}
 			}
 		}
@@ -181,4 +186,8 @@ nactiData = function() {
 
 vycistiData = function() {
 	bets.length = 0;
+}
+
+removeDuplicates = function() {
+	
 }
